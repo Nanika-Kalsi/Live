@@ -1,4 +1,8 @@
 class PositionPaper < ActiveRecord::Base
+  belongs_to :committee
+  belongs_to :topic
+  belongs_to :user
+
   has_attached_file :paper,
                     :storage => :s3,
                     :s3_credentials => Proc.new{|a| a.instance.s3_credentials }
