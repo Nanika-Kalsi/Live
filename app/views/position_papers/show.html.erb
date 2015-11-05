@@ -1,3 +1,9 @@
-<p id="notice"><%= notice %></p>
+<h3> <%= @position_paper.title %></h3>
+<div class="small-6 columns">
+  <span>Committee: <%= @position_paper.committee_name%></span>
+</div>
+<div class="small-6 columns">
+  <span>Topic: <%= @position_paper.topic_name%></span>
+</div>
 
 <%= link_to 'Back', position_papers_path %>
