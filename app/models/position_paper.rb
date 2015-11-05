@@ -12,4 +12,20 @@ class PositionPaper < ActiveRecord::Base
   def s3_credentials
     {:bucket => "cimun", :access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']}
   end
+
+  def create_title
+    self.update!({title: "#{self.country} - #{self.committee_name}: #{self.topic_name}"})
+  end
+
+  def country
+    self.user.country
+  end
+
+  def committee_name
+    self.committee.name
+  end
+
+  def topic_name
+    self.topic.name
+  end
 end
