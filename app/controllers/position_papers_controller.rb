@@ -1,6 +1,5 @@
 class PositionPapersController < ApplicationController
   before_action :set_position_paper, only: [:show, :destroy]
-  after_action :create_title, only: [:create]
 
   # GET /position_papers
   # GET /position_papers.json
@@ -26,6 +25,7 @@ class PositionPapersController < ApplicationController
 
     respond_to do |format|
       if @position_paper.save
+        @position_paper.create_title
         format.html { redirect_to new_position_paper_path, notice: 'Position paper was successfully created.' }
       else
         format.html { render :new }
@@ -52,6 +52,6 @@ class PositionPapersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_paper_params
-      params.require(:position_paper).permit(:paper, :committee_id, :topic_id)
+      params.require(:position_paper).permit(:paper, :committee_id, :topic_id, :user_id)
     end
 end
