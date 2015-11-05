@@ -1,5 +1,6 @@
 class PositionPapersController < ApplicationController
   before_action :set_position_paper, only: [:show, :destroy]
+  after_action :create_title, only: [:create]
 
   # GET /position_papers
   # GET /position_papers.json
