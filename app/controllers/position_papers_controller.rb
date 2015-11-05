@@ -1,5 +1,5 @@
 class PositionPapersController < ApplicationController
-  before_action :set_position_paper, only: [:show, :edit, :update, :destroy]
+  before_action :set_position_paper, only: [:show, :destroy]
 
   # GET /position_papers
   # GET /position_papers.json
@@ -18,10 +18,6 @@ class PositionPapersController < ApplicationController
     @committees = Committee.pluck(:name, :id)
   end
 
-  # GET /position_papers/1/edit
-  def edit
-  end
-
   # POST /position_papers
   # POST /position_papers.json
   def create
@@ -29,24 +25,9 @@ class PositionPapersController < ApplicationController
 
     respond_to do |format|
       if @position_paper.save
-        format.html { redirect_to @position_paper, notice: 'Position paper was successfully created.' }
-        format.json { render :show, status: :created, location: @position_paper }
+        format.html { redirect_to new_position_paper_path, notice: 'Position paper was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @position_paper.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /position_papers/1
-  # PATCH/PUT /position_papers/1.json
-  def update
-    respond_to do |format|
-      if @position_paper.update(position_paper_params)
-        format.html { redirect_to @position_paper, notice: 'Position paper was successfully updated.' }
-        format.json { render :show, status: :ok, location: @position_paper }
-      else
-        format.html { render :edit }
         format.json { render json: @position_paper.errors, status: :unprocessable_entity }
       end
     end
