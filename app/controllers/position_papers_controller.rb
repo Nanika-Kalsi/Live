@@ -15,6 +15,7 @@ class PositionPapersController < ApplicationController
   # GET /position_papers/new
   def new
     @position_paper = PositionPaper.new
+    @committees = Committee.pluck(:name, :id)
   end
 
   # GET /position_papers/1/edit
@@ -69,6 +70,6 @@ class PositionPapersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_paper_params
-      params[:position_paper]
+      params.require(:position_paper).permit(:paper, :committee_id, :topic_id)
     end
 end

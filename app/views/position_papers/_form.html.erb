@@ -12,6 +12,15 @@
   <% end %>
 
   <div class="actions">
+    <%= f.label :committee_id, "Select your Committee" %>
+    <%= f.select :committee_id, options_for_select(@committees), prompt: ["-- Select A Committee", nil] %>
+
+    <%= f.label :topic_id, "Select your Topic" %>
+    <%= f.select :topic_id, options_for_select(["-- Please Select a Committee --", nil])%>
+
+    <%= f.label :paper, "Upload Position Paper (.doc/.docx only please)" %>
+    <%= f.file_field :paper %>
+
     <%= f.submit %>
   </div>
 <% end %>
