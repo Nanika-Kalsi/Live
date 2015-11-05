@@ -47,7 +47,11 @@ class PositionPapersController < ApplicationController
   end
 
   def download
-    redirect_to @position_paper.paper.url
+    if @position_paper.user == current_user || current_user.is_admin
+      redirect_to @position_paper.paper.url
+    else
+      redirect_to position_papers_path
+    end
   end
 
   private
