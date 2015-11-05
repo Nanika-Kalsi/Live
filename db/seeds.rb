@@ -26,3 +26,5 @@ Committee.create!({name: "Cabinet of Republic of Iraq (2003)"})
 Committee.create!({name: "Cabinet of the Islamic Republic of Iran (2003)"})
 Committee.create!({name: "Cabinet of Kingdom of Saudi Arabia (2003)"})
 Committee.create!({name: "International Press Delegation"})
+
+Topic.create!({name: "Fake Topic"})
