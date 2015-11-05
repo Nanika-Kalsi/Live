@@ -13,7 +13,6 @@
     <% @position_papers.each do |position_paper| %>
       <tr>
         <td><%= link_to 'Show', position_paper %></td>
-        <td><%= link_to 'Edit', edit_position_paper_path(position_paper) %></td>
         <td><%= link_to 'Destroy', position_paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
