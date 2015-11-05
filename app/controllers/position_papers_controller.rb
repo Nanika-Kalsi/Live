@@ -33,7 +33,7 @@ class PositionPapersController < ApplicationController
     respond_to do |format|
       if @position_paper.save
         @position_paper.create_title
-        format.html { redirect_to @position_paper, notice: 'Position paper was successfully created.' }
+        format.html { redirect_to position_papers_path, notice: 'Position Paper was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @position_paper.errors, status: :unprocessable_entity }
@@ -46,7 +46,7 @@ class PositionPapersController < ApplicationController
   def destroy
     @position_paper.destroy
     respond_to do |format|
-      format.html { redirect_to position_papers_url, notice: 'Position paper was successfully destroyed.' }
+      format.html { redirect_to position_papers_url, notice: 'Position Paper was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -54,7 +54,6 @@ class PositionPapersController < ApplicationController
   private
     # Confirms that the given user_id param matches the current_user
     def confirm_user_id_matches_current_user
-      p position_paper_params
       unless position_paper_params[:user_id].to_i == current_user.id
         flash[:notice] = "The User ID has to match yours, nice try."
         redirect_to new_position_paper_path
