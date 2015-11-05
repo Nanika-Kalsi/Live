@@ -9,6 +9,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      ## CIMUN Stuff
+      t.string   :country
+
       ## Rememberable
       t.datetime :remember_created_at
 

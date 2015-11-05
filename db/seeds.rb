@@ -1,5 +1,6 @@
 User.create!({email: "admin@live.com",
-              password: "password"})
+              password: "password",
+              country: "Fake Country"})
 
 Committee.create!({name: "United Nations General Assembly"})
 Committee.create!({name: "North Atlantic Treaty Organization"})
