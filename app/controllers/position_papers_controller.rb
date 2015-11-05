@@ -4,7 +4,11 @@ class PositionPapersController < ApplicationController
   # GET /position_papers
   # GET /position_papers.json
   def index
-    @position_papers = PositionPaper.all
+    if current_user.is_admin
+      @position_papers = PositionPaper.all
+    else
+      @position_papers = PositionPaper.where(user_id: current_user.id)
+    end
   end
 
   # GET /position_papers/1

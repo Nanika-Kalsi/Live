@@ -11,6 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## CIMUN Stuff
       t.string   :country
+      t.boolean  :is_admin, default: false
 
       ## Rememberable
       t.datetime :remember_created_at
