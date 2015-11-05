@@ -1,7 +1,7 @@
 <%= form_for(@position_paper) do |f| %>
   <% if @position_paper.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@position_paper.errors.count, "error") %> prohibited this position_paper from being saved:</h2>
+      <h2><%= pluralize(@position_paper.errors.count, "error") %> prohibited this Position Paper from being saved:</h2>
 
       <ul>
       <% @position_paper.errors.full_messages.each do |message| %>
@@ -13,10 +13,10 @@
 
   <div class="actions">
     <%= f.label :committee_id, "Select your Committee" %>
-    <%= f.select :committee_id, options_for_select(@committees), prompt: ["-- Select A Committee", nil] %>
+    <%= f.select :committee_id, options_for_select(@committees), prompt: "-- Select A Committee --" %>
 
     <%= f.label :topic_id, "Select your Topic" %>
-    <%= f.select :topic_id, options_for_select(["-- Please Select a Committee --", nil])%>
+    <%= f.select :topic_id, options_for_select(@topics) %>
 
     <%= f.hidden_field :user_id, value: current_user.id %>
 

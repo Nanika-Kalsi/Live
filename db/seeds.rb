@@ -27,4 +27,8 @@ Committee.create!({name: "Cabinet of the Islamic Republic of Iran (2003)"})
 Committee.create!({name: "Cabinet of Kingdom of Saudi Arabia (2003)"})
 Committee.create!({name: "International Press Delegation"})
 
-Topic.create!({name: "Fake Topic"})
+Committee.all.each do |comm|
+  3.times do
+    Topic.create!({name: "#{Faker::Hacker.adjective} #{Faker::Hacker.noun} #{Faker::Hacker.ingverb}", committee_id: comm.id})
+  end
+end

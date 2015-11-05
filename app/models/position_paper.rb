@@ -9,6 +9,15 @@ class PositionPaper < ActiveRecord::Base
 
   validates_attachment_content_type :paper, :content_type => [ 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ]
 
+  validates :committee_id, :topic_id, :user_id, :paper, presence: true
+  validate :user_id_matches_current_user
+
+  def user_id_matches_current_user
+    #Will check that the given user_id matches the current_user.id
+    #Validates that the author is who they claim to be
+    true
+  end
+
   def s3_credentials
     {:bucket => "cimun", :access_key_id => ENV['S3_ACCESS_KEY_ID'], :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']}
   end

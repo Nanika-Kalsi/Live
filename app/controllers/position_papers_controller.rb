@@ -16,6 +16,7 @@ class PositionPapersController < ApplicationController
   def new
     @position_paper = PositionPaper.new
     @committees = Committee.pluck(:name, :id)
+    @topics = ["-- Select A Committee First --", nil]
   end
 
   # POST /position_papers
@@ -26,7 +27,7 @@ class PositionPapersController < ApplicationController
     respond_to do |format|
       if @position_paper.save
         @position_paper.create_title
-        format.html { redirect_to new_position_paper_path, notice: 'Position paper was successfully created.' }
+        format.html { redirect_to position_papers_path, notice: 'Position paper was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @position_paper.errors, status: :unprocessable_entity }
