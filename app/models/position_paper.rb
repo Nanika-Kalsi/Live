@@ -16,7 +16,11 @@ class PositionPaper < ActiveRecord::Base
   end
 
   def create_title
-    self.update!({title: "#{self.country} - #{self.committee_name}: #{self.topic_name}"})
+    if self.committee_name == "Black Paper"
+      self.update!({title: "#{self.country} - Black Paper"})
+    else
+      self.update!({title: "#{self.country} - #{self.committee_name}: #{self.topic_name}"})
+    end
   end
 
   def country
