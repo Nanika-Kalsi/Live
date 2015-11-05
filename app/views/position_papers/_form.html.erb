@@ -18,6 +18,8 @@
     <%= f.label :topic_id, "Select your Topic" %>
     <%= f.select :topic_id, options_for_select(["-- Please Select a Committee --", nil])%>
 
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
     <%= f.label :paper, "Upload Position Paper (.doc/.docx only please)" %>
     <%= f.file_field :paper %>
 
