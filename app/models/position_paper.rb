@@ -15,6 +15,10 @@ class PositionPaper < ActiveRecord::Base
   def user_id_matches_current_user
     #Will check that the given user_id matches the current_user.id
     #Validates that the author is who they claim to be
+    unless user_id == current_user.id
+      self.errors["Incorrect User"] << "You cant change the User ID...nice try"
+    end
+
     true
   end
 

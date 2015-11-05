@@ -1,5 +1,7 @@
 class PositionPapersController < ApplicationController
   before_action :set_position_paper, only: [:show, :destroy]
+  before_action :confirm_user_id_matches_current_user, only: :create
+
 
   # GET /position_papers
   # GET /position_papers.json
@@ -50,6 +52,14 @@ class PositionPapersController < ApplicationController
   end
 
   private
+    # Confirms that the given user_id param matches the current_user
+    def confirm_user_id_matches_current_user
+      unless position_paper_params[:user_id] == current_user.id
+        flash[:notice] = "The User ID has to match yours, nice try."
+        redirect_to new_position_paper_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_position_paper
       @position_paper = PositionPaper.find(params[:id])

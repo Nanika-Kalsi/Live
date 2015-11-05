@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% if flash[:notice] %>
+    <h4> <%= flash[:notice] %> </h4>
+  <% end %>
+
   <div class="actions">
     <%= f.label :committee_id, "Select your Committee" %>
     <%= f.select :committee_id, options_for_select(@committees), prompt: "-- Select A Committee --" %>
