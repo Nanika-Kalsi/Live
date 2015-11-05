@@ -1,5 +1,5 @@
 class PositionPapersController < ApplicationController
-  before_action :set_position_paper, only: [:show, :destroy]
+  before_action :set_position_paper, only: [:download, :destroy]
   before_action :confirm_user_id_matches_current_user, only: :create
 
 
@@ -11,11 +11,6 @@ class PositionPapersController < ApplicationController
     else
       @position_papers = PositionPaper.where(user_id: current_user.id)
     end
-  end
-
-  # GET /position_papers/1
-  # GET /position_papers/1.json
-  def show
   end
 
   # GET /position_papers/new
@@ -49,6 +44,10 @@ class PositionPapersController < ApplicationController
       format.html { redirect_to position_papers_url, notice: 'Position Paper was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def download
+    redirect_to @position_paper.paper.url
   end
 
   private
