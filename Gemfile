@@ -24,6 +24,7 @@ gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'awesome_print'
 gem 'faker'
+gem 'jquery-datatables-rails', '~> 3.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

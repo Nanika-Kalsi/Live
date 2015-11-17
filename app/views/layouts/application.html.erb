@@ -14,7 +14,12 @@
 
   <body>
     <div class="row">
-      <%= yield %>
+      <div class="container">
+        <div class=navrow>
+          <%= render 'layouts/navrow' %>
+        </div>
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>
