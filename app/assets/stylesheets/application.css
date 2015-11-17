@@ -23,6 +23,11 @@ body {
   background-repeat: no-repeat;
 }
 
+.logo {
+  max-height: 200px;
+  max-width: 200px;
+}
+
 .container{
   background-color: #fff;
   padding: 5em;

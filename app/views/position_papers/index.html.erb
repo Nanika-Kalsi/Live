@@ -1,28 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Position Papers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>&nbsp;</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @position_papers.each do |position_paper| %>
-      <tr>
-        <td><%= position_paper.title %></td>
-        <!-- Will download the attached paper from S3 -->
-        <td><%= link_to 'Download', download_path(position_paper.id) %></td>
-        <td><%= link_to 'Delete', position_paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<h1>All White Papers</h1>
 <br>
+<% if @position_papers.empty? %>
+  <h4>There appear to be no submitted position papers, you could be the first!</h4>
+<% else %>
+  <table class="positionPaperIndexTable">
+    <thead>
+      <tr>
+        <td>Title</td>
+        <td>Country</td>
+        <td>Committee</td>
+        <td>&nbsp;</td>
+        <% if current_user.is_admin %>
+          <td>&nbsp;</td>
+        <% end %>
+      </tr>
+    </thead>
 
-<%= link_to 'New Position paper', new_position_paper_path %>
+    <tbody>
+      <% @position_papers.each do |position_paper| %>
+        <tr>
+          <td><%= position_paper.title %></td>
+          <td><%= position_paper.user.country%></td>
+          <td><%= position_paper.committee.name%></td>
+          <!-- Will download the attached paper from S3 -->
+          <td><%= link_to 'Download', download_path(position_paper.id) %></td>
+          <% if current_user.is_admin %>
+            <td><%= link_to 'Delete', position_paper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<script>
+  $(".positionPaperIndexTable").DataTable();
+</script>

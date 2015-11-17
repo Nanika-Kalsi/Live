@@ -9,7 +9,7 @@ class PositionPapersController < ApplicationController
     if current_user.is_admin
       @position_papers = PositionPaper.all
     else
-      @position_papers = PositionPaper.where(user_id: current_user.id)
+      @position_papers = PositionPaper.select { |p| p.topic.name != "Black Paper"}
     end
   end
 

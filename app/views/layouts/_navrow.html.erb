@@ -1,0 +1,25 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">CIMUN Live</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <% if current_user %>
+        <% if current_user.is_admin %>
+          <li><%= link_to "Admin View: All Position Papers", position_papers_path %></li>
+          <li><%= link_to "Admin View: User Management", '#' %></li>
+        <% else %>
+          <li><%= link_to "All Position Papers", position_papers_path %></li>
+        <% end %>
+        <li><%= link_to "New Position Paper", new_position_paper_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path, method: 'DELETE' %></li>
+      <% else %>
+        <li><%= link_to "Login", new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
